@@ -1,12 +1,15 @@
 /* Start Variables */
 :root {
-    --main-color: rgb(25, 200, 250);
-    --transparent-color: rgb(15 116 143 / 70%);
-    --secondary-color: white;
-    --section-padding: 100px;
-    --paragraph-color: #777;
-    --line-height: 2;
-    --main-duration: 0.3s;
+    --main-color: #2196F3 ;
+    --main-color-alt: #1787e0 ;
+    --background-color: white ;
+    --background-color-alt: #fafafa ;
+    --shadow-color:#ddd ;
+    --transparent-color: ;
+    --section-padding: ;
+    --paragraph-color: ;
+    --line-height: ;
+    --main-duration: 0.3s ;
 }
 
 /* End Variables */
@@ -81,13 +84,15 @@ html {
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Cairo", sans-serif;
     text-transform: capitalize;
 }
 
 
 ul {
     list-style: none;
+    margin:0;
+    padding:0;
 }
 
 .container {
@@ -134,111 +139,86 @@ ul {
 
 /* Start Header  */
 header {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: 2;
+    background-color: var(--background-color) ;
+    box-shadow: 0 0 10px var(--shadow-color);
+    -webkit-box-shadow: 0 0 10px var(--shadow-color);
+    -moz-box-box-shadow: 0 0 10px var(--shadow-color);
+    position: relative;
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     position: relative;
-    min-height: 97px;
+    min-height: 72px;
 }
 
-header .container::after {
-    content: "";
-    position: absolute;
-    height: 1px;
-    background-color: #a2a2a2;
-    bottom: 0;
-    width: calc(100% - 30px);
-    left: 15px;
-}
-
-header img {
-    height: 40px;
-}
-
-header nav {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-header nav .toggle-menu {
-    color: white;
-    font-size: 22px;
-}
-
-@media (min-width: 768px) {
-    header nav .toggle-menu {
-        display: none;
-    }
-}
-
-header .container nav ul {
-    display: flex;
-}
-
-@media (max-width:767px) {
-    header .container nav ul {
-        display: none;
-    }
-
-    header nav .toggle-menu:hover+ul {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgb(0 0 0 / 50%);
-    }
-
-    header nav ul li a {
-        padding: 15px !important;
-    }
-
-}
-
-header nav ul a {
-    padding: 40px 10px;
-    display: block;
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    transition: var(--main-duration);
-    position: relative;
-    z-index: 2;
-}
-
-header nav ul a.active,
-header nav ul a:hover {
+header .logo {
     color: var(--main-color);
-    border-bottom: 1px solid var(--main-color);
-
+    font-size: 26px;
+    font-weight: 700;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-header nav .form {
-    width: 40px;
-    height: 30px;
+@media (max-width: 768px) {
+    header .logo {
+        width: 100%;
+    }
+}
+header .main-nav {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    header .main-nav {
+        margin: auto;
+    }
+}
+
+header .main-nav > li > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72px;
+    color: black;
     position: relative;
-    margin-left: 30px;
-    border-left: 1px solid white;
-    cursor: pointer;
+    padding: 0 30px;
+    transition: var(--main-duration);
+    font-size: 18px;
+    overflow: hidden;
+}
+@media (max-width:767px) {
+    header .main-nav > li > a {
+        font-size: 14px;
+        padding:10px;
+        height: 40px;
+    }
 }
 
-header nav .form i {
-    font-size: 20px;
+header .main-nav > li > a::before {
+    content: "";
+    width: 100%;
+    height: 4px;
     position: absolute;
-    color: white;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
+    top: 0;
+    left:-100%;
+    background-color: var(--main-color);
+    transition: var(--main-duration);
+}
+header .main-nav > li > a:hover {
+    color: var(--main-color-alt);
+    background-color: var(--background-color-alt);
+    transition: var(--main-duration);
+
+}
+header .main-nav > li > a:hover::before {
+    left: 0;
+    transition: var(--main-duration);
 }
 
 /* End Header  */
