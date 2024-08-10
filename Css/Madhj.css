@@ -1,15 +1,15 @@
 /* Start Variables */
 :root {
-    --main-color: #2196F3 ;
-    --main-color-alt: #1787e0 ;
-    --background-color: white ;
-    --background-color-alt: #fafafa ;
-    --shadow-color:#ddd ;
+    --main-color: #2196F3;
+    --main-color-alt: #1787e0;
+    --background-color: white;
+    --background-color-alt: #fafafa;
+    --shadow-color: #ddd;
     --transparent-color: ;
     --section-padding: ;
-    --paragraph-color: ;
-    --line-height: ;
-    --main-duration: 0.3s ;
+    --paragraph-color: #666;
+    --line-height: 1.7;
+    --main-duration: 0.3s;
 }
 
 /* End Variables */
@@ -91,8 +91,8 @@ body {
 
 ul {
     list-style: none;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -139,7 +139,7 @@ ul {
 
 /* Start Header  */
 header {
-    background-color: var(--background-color) ;
+    background-color: var(--background-color);
     box-shadow: 0 0 10px var(--shadow-color);
     -webkit-box-shadow: 0 0 10px var(--shadow-color);
     -moz-box-box-shadow: 0 0 10px var(--shadow-color);
@@ -163,6 +163,7 @@ header .logo {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: capitalize;
 }
 
 @media (max-width: 768px) {
@@ -170,6 +171,7 @@ header .logo {
         width: 100%;
     }
 }
+
 header .main-nav {
     display: flex;
 }
@@ -180,7 +182,7 @@ header .main-nav {
     }
 }
 
-header .main-nav > li > a {
+header .main-nav>li>a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -192,31 +194,34 @@ header .main-nav > li > a {
     font-size: 18px;
     overflow: hidden;
 }
+
 @media (max-width:767px) {
-    header .main-nav > li > a {
+    header .main-nav>li>a {
         font-size: 14px;
-        padding:10px;
+        padding: 10px;
         height: 40px;
     }
 }
 
-header .main-nav > li > a::before {
+header .main-nav>li>a::before {
     content: "";
     width: 100%;
     height: 4px;
     position: absolute;
     top: 0;
-    left:-100%;
+    left: -100%;
     background-color: var(--main-color);
     transition: var(--main-duration);
 }
-header .main-nav > li > a:hover {
+
+header .main-nav>li>a:hover {
     color: var(--main-color-alt);
     background-color: var(--background-color-alt);
     transition: var(--main-duration);
 
 }
-header .main-nav > li > a:hover::before {
+
+header .main-nav>li>a:hover::before {
     left: 0;
     transition: var(--main-duration);
 }
@@ -228,108 +233,133 @@ header .main-nav > li > a:hover::before {
 /* Start Section landing   */
 
 .landing {
-    min-height: 100vh;
-    background-color: #1b3c44;
-    background-image: url("../images/landing.jpg");
-    background-size: cover;
+    /* max-height: 100vh; */
+    /* background-color: var(--background-color-alt); */
     position: relative;
 }
 
-.landing .overlay {
+.landing::before {
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(0 0 0 / 70%);
+    background-color: #ECECEC;
+    z-index: -1;
+    transform: skewY(-6deg);
+    transform-origin: top left;
+}
+
+.landing .container {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    padding-bottom: 120px;
 }
 
 .landing .text {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    width: 50%;
-    padding: 50px;
-    background-color: var(--transparent-color);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
+    flex: 1;
 }
 
-.landing .text .content {
+.landing .text h1 {
+    font-size: 40px;
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+.landing .text p {
+    font-size: 22px;
+    line-height: var(--line-height);
+    color: var(--paragraph-color);
+    margin: 5px 0 0;
     max-width: 500px;
 }
 
-@media (max-width:767px) {
+@media (max-width:991px) {
     .landing .text {
-        width: 100%;
-
-    }
-
-    .landing .text .content {
-        max-width: 100%;
         text-align: center;
     }
-}
 
-.landing .text .content h2 {
-    font-weight: normal;
-    line-height: var(--line-height);
-    margin-bottom: 20px;
-}
-
-.landing .text .content p {
-    font-size: 14px;
-    line-height: var(--line-height);
-}
-
-.landing .change-background {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ddd;
-    cursor: pointer;
+    .landing .text p {
+        margin: 10px auto;
+    }
 }
 
 @media (max-width:767px) {
-    .landing .change-background {
+    .landing .text h1 {
+        font-size: 28px;
+    }
+
+    .landing .text p {
+        font-size: 18;
+    }
+}
+
+.landing img {
+    position: relative;
+    width: 600px;
+    max-width: 100%;
+    animation: up-and-down 5s linear infinite;
+}
+
+@media (max-width:991px) {
+    .landing .image {
         display: none;
     }
 }
 
-.landing .fa-angle-left {
-    left: 30px;
+/* Animation of image */
+@keyframes up-and-down {
+
+    0%,
+    100% {
+        top: 0;
+    }
+
+    50% {
+        top: -50px;
+    }
 }
 
-.landing .fa-angle-right {
-    right: 30px;
-}
+/* End Animation of image */
 
-.landing .bullets {
+.landing .go-down {
+    color: var(--main-color);
     position: absolute;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 30px;
-    display: flex;
-
+    transition: var(--main-duration);
 }
 
-.landing .bullets li {
-    border: 1px solid white;
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    margin-left: 10px;
-    cursor: pointer;
+.landing .go-down:hover {
+    color: var(--main-color-alt);
 }
 
-.landing .bullets li.active {
-    background-color: var(--main-color);
-    border-color: var(--main-color);
+.landing .go-down i {
+    animation: bouncing 1.5s infinite;
 }
+
+/* Animation of icon */
+@keyframes bouncing {
+
+    0%,
+    10%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40%,60% {
+        transform: translateY(-15px);
+    }
+}
+
+@media (max-width:767px) {}
+
 
 /* End Section landing  */
 
@@ -754,7 +784,7 @@ header .main-nav > li > a:hover::before {
 
 .our-skills .testimonials .content .text {
     line-height: var(--line-height);
-;
+    ;
     border-bottom: 1px solid var(--paragraph-color);
 }
 
